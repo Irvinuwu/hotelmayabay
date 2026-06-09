@@ -151,25 +151,6 @@ if (formulario) {
         return;
     }
 
-    const idReserva = data[0].id_reserva;
-
-    const { error: errorTraslado } =
-        await supabaseClient
-        .from("reservas_traslado")
-        .insert([
-            {
-                id_reserva: idReserva,
-                fecha_traslado: entrada,
-                costo: 25
-            }
-        ]);
-
-    if (errorTraslado) {
-
-        console.error(errorTraslado);
-
-        alert("No fue posible registrar el traslado");
-    }
 }
 
         // --- INSERCIÓN SI TODAS LAS REGLAS SE CUMPLEN ---
@@ -240,6 +221,90 @@ async function cargarDashboard() {
         .select("*", { count: "exact", head: true });
 
     ocupadasElemento.textContent = ocupadas || 0;
+    const totalHabitaciones = 40;
+
+    
+const { count: deluxe } = await supabaseClient
+    .from("reservas_habitacion")
+    .select("*", { count: "exact", head: true })
+    .eq("habitacion", "Deluxe");
+
+const { count: premium } = await supabaseClient
+    .from("reservas_habitacion")
+    .select("*", { count: "exact", head: true })
+    .eq("habitacion", "Premium");
+
+const { count: presidencial } = await supabaseClient
+    .from("reservas_habitacion")
+    .select("*", { count: "exact", head: true })
+    .eq("habitacion", "Presidencial");
+
+    //barra de carga
+  const porcentajeDeluxe =
+    Math.min(
+        Math.round((deluxe / 15) * 100),
+        100
+    );
+
+const porcentajePremium =
+    Math.min(
+        Math.round((premium / 15) * 100),
+        100
+    );
+
+const porcentajePresidencial =
+    Math.min(
+        Math.round((presidencial / 10) * 100),
+        100
+    );
+    const barraDeluxe = document.getElementById("barraDeluxe");
+const barraPremium = document.getElementById("barraPremium");
+const barraPresidencial = document.getElementById("barraPresidencial");
+
+// Deluxe
+if (porcentajeDeluxe >= 80) {
+    barraDeluxe.style.background = "#e53935";
+} else if (porcentajeDeluxe >= 60) {
+    barraDeluxe.style.background = "#ffb300";
+} else {
+    barraDeluxe.style.background = "#4caf50";
+}
+
+// Premium
+if (porcentajePremium >= 80) {
+    barraPremium.style.background = "#e53935";
+} else if (porcentajePremium >= 60) {
+    barraPremium.style.background = "#ffb300";
+} else {
+    barraPremium.style.background = "#4caf50";
+}
+
+// Presidencial
+if (porcentajePresidencial >= 80) {
+    barraPresidencial.style.background = "#e53935";
+} else if (porcentajePresidencial >= 60) {
+    barraPresidencial.style.background = "#ffb300";
+} else {
+    barraPresidencial.style.background = "#4caf50";
+}
+
+document.getElementById("barraDeluxe").style.width =
+    porcentajeDeluxe + "%";
+
+document.getElementById("barraPremium").style.width =
+    porcentajePremium + "%";
+
+document.getElementById("barraPresidencial").style.width =
+    porcentajePresidencial + "%";
+
+document.getElementById("textoDeluxe").textContent =
+    `${deluxe}/15 habitaciones`;
+
+document.getElementById("textoPremium").textContent =
+    `${premium}/15 habitaciones`;
+
+document.getElementById("textoPresidencial").textContent =
+    `${presidencial}/10 habitaciones`;
 
     // CAMIONETAS DISPONIBLES
     const { count: ocupadasTraslado } = await supabaseClient
@@ -290,14 +355,30 @@ async function cargarReservas() {
     tabla.innerHTML = "";
 
     // Mapeo optimizado de las filas de la tabla
-    const filasHTML = data.map(reserva => `
-        <tr>
-            <td>${reserva.cliente}</td>
-            <td>${reserva.habitacion}</td>
-            <td>${reserva.fecha_entrada}</td>
-            <td>${reserva.fecha_salida}</td>
-        </tr>
-    `).join('');
+    const filasHTML = data.map(reserva => {
+
+    const entrada = new Date(reserva.fecha_entrada);
+    const salida = new Date(reserva.fecha_salida);
+
+    const noches = Math.ceil(
+        (salida - entrada) / (1000 * 60 * 60 * 24)
+    );
+
+    return `
+    <tr>
+        <td>👤 ${reserva.cliente}</td>
+        <td>🛏️ ${reserva.habitacion}</td>
+        <td>📅 ${reserva.fecha_entrada}</td>
+        <td>📅 ${reserva.fecha_salida}</td>
+        <td>🌙 ${noches} noches</td>
+        <td>
+            <span class="estado confirmada">
+                Confirmada
+            </span>
+        </td>
+    </tr>
+    `;
+}).join('');
 
     tabla.innerHTML = filasHTML;
 }
