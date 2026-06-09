@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Maya Bay</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">   
+</head>
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+
+        <nav>
+
+            <div class="logo">
+                 MAYA BAY
+            </div>
+
+            <ul>
+
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#habitaciones">Habitaciones</a></li>
+                <li><a href="#reservas">Reservar</a></li>
+                <li><a href="#admin">Administrador</a></li>
+
+            </ul>
+
+        </nav>
+
+        <!-- HERO -->
+
+        <div class="hero">
+
+            <h1>Bienvenido a Maya Bay</h1>
+
+            <p>
+                Lujo frente al mar en la playa más famosa de Tailandia.
+            </p>
+
+
+        </div>
+
+    </header>
+
+    <!-- HABITACIONES -->
+
+    <section id="habitaciones" class="habitaciones">
+
+        <h2>Habitaciones Destacadas</h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <img src="img/hdelux.webp">
+
+                <h3>Habitación Deluxe</h3>
+
+                <p>
+                    Vista al mar y desayuno incluido.
+                </p>
+
+                <!-- CONTENEDOR DE PRECIO + BOTÓN -->
+                <div class="card-footer">
+
+                    <span class="precio">$120 USD</span>
+
+                     <a href="habitacion_delux.html">
+                        <button>Ver más</button>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <img src="img/hpre1.jpg">
+
+                <h3>Suite Premium</h3>
+
+                 <p>
+                    Jacuzzi privado y minibar.
+                </p>
+
+                 <div class="card-footer">
+
+                    <span class="precio">$250 USD</span>
+
+                    <a href="habiteacion_premiun.html">
+                        <button>Ver más</button>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <img src="img/sp1.jpg">
+
+                <h3>Suite Presidencial</h3>
+
+                <p>
+                    La mejor experiencia de lujo.
+                </p>
+
+                 <div class="card-footer">
+
+                    <span class="precio">$450 USD</span>
+
+                     <a href="habitacion_presidencial.html">
+                        <button>Ver más</button>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FORMULARIO -->
+
+    <section id="reservas" class="reservas">
+
+    <div class="reserva-card">
+
+        <h2>Reserva tu estancia</h2>
+
+        <p class="subtitulo">
+            Vive una experiencia inolvidable frente al mar.
+        </p>
+
+       <form id="formReserva">
+
+            <div class="campo">
+                <input type="text"
+                       name="cliente"
+                       placeholder="Nombre completo"
+                       required>
+            </div>
+
+            <div class="campo">
+                <input type="email"
+                       name="correo"
+                       placeholder="Correo electrónico"
+                       required>
+            </div>
+
+            <div class="campo">
+
+    <label>Fechas de estancia</label>
+
+    <input
+        type="text"
+        id="rangoFechas"
+        placeholder="Selecciona Entrada y Salida"
+        required>
+
+    <input type="hidden" name="entrada" id="entrada">
+    <input type="hidden" name="salida" id="salida">
+
+</div>
+
+            <div class="campo">
+                <select name="habitacion">
+
+                    <option value="Deluxe">
+                        Habitación Deluxe
+                    </option>
+
+                    <option value="Premium">
+                        Suite Premium
+                    </option>
+
+                    <option value="Presidencial">
+                        Suite Presidencial
+                    </option>
+
+                </select>
+            </div>
+
+           <div class="servicio-extra">
+
+    <input
+        type="checkbox"
+        id="traslado"
+        name="traslado">
+
+    <label for="traslado">
+
+        <span class="icono">🚐</span>
+
+        <div>
+
+            <h4>Traslado al aeropuerto</h4>
+
+            <p>
+                Transporte privado desde y hacia el aeropuerto.
+            </p>
+
+            <small>
+                +$25 USD por reservación
+            </small>
+
+        </div>
+
+    </label>
+
+</div>
+
+            <button type="submit" class="btn-reserva">
+                Reservar Ahora
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+    <!-- ADMIN -->
+
+    <section id="admin" class="admin">
+
+    <h2>Panel de Administración</h2>
+
+    <div class="admin-box">
+
+        <div class="admin-card">
+
+            <h3>Habitaciones Ocupadas</h3>
+
+            <p id="ocupadas">0</p>
+
+        </div>
+
+        <div class="admin-card">
+
+            <h3>Camionetas Disponibles</h3>
+
+            <p id="camionetas">0</p>
+
+        </div>
+
+        <div class="admin-card">
+
+            <h3>Reservas del Día</h3>
+
+            <p id="reservasHoy">0</p>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+<div class="tabla-reservas">
+
+    <h3>Últimas Reservas</h3>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Habitación</th>
+                <th>Entrada</th>
+                <th>Salida</th>
+            </tr>
+        </thead>
+
+        <tbody id="listaReservas">
+
+        </tbody>
+
+    </table>
+
+</div>
+
+    <footer>
+
+        <p>
+            © 2026 Hotel Maya Bay
+        </p>
+
+    </footer>
+    
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

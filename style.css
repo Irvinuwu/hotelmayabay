@@ -1,0 +1,489 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+/* HEADER */
+
+header{
+    height:80vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.4)),
+    url(img/mayabay\ hotel.jpg);
+
+    background-size:cover;
+    background-position:center;
+
+    color:white;
+
+}
+
+/* NAVBAR */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:25px 80px;
+
+
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+
+    font-family: serif;
+
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+    text-align: left;
+}
+
+nav ul li a{
+    color:white;
+    font-size: large;
+    text-decoration:none;
+    transition:.3s;
+    font-family: serif;
+
+}
+
+nav ul li a:hover{
+    color:#d4af37;
+}
+
+/* HERO */
+
+.hero{
+    height:85vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+
+}
+
+.hero h1{
+    font-size: 60px;
+     font-family: serif;
+}
+
+.hero p{
+    margin:20px 0;
+    font-size:22px;
+}
+
+/* HABITACIONES */
+element style{
+    background-color: navy;
+}
+.habitaciones{
+    padding:80px 50px;
+    text-align:center;
+}
+
+.habitaciones h2{
+    margin-bottom:50px;
+    font-size:40px;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:320px;
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card h3{
+    margin:20px 0 10px;
+}
+
+.card p{
+    padding:0 20px;
+    color:#666;
+}
+
+.card span{
+    display:block;
+    margin:20px;
+    color:#d4af37;
+    font-weight:bold;
+}
+
+/* FORMULARIO */
+
+
+.reservas{
+    padding:100px 20px;
+
+    background:
+    linear-gradient(rgba(0,0,0,.65),
+                    rgba(0,0,0,.65)),
+    url("img/hdelux.webp");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+.reservas h2{
+    color:white;
+    font-size:45px;
+    margin-bottom:15px;
+    font-family:sans-serif;
+    text-align: center;
+}
+.reservas p{
+     color:white;
+    font-size:15px;
+    margin-bottom:15px;
+    font-family:sans-serif;
+    text-align: center;
+}
+
+.reservas form{
+    max-width:650px;
+    margin:auto;
+
+    background:rgba(255,255,255,.95);
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+
+    display:flex;
+    flex-direction:column;
+
+    gap:20px;
+}
+
+.reservas input,
+.reservas select{
+    width:100%;
+
+    padding:16px;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    transition:.3s;
+}
+
+.reservas input:focus,
+.reservas select:focus{
+    outline:none;
+    border-color:#d4af37;
+
+    box-shadow:0 0 10px rgba(212,175,55,.3);
+}
+
+.reservas label{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    font-size:18px;
+
+    color:#333;
+}
+
+.reservas button{
+    padding:18px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#d4af37;
+
+    color:white;
+
+    font-size:18px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.reservas button:hover{
+    background:#b9962d;
+    transform:translateY(-3px);
+    
+}
+
+/* CALENDARIO */
+
+#rangoFechas{
+    width:100%;
+    padding:16px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:16px;
+    cursor:pointer;
+    background:white;
+}
+
+/* SERVICIO EXTRA */
+
+.servicio-extra{
+    margin:10px 0;
+}
+
+.servicio-extra input{
+    display:none;
+}
+
+.servicio-extra label{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:20px;
+    border:2px solid #ddd;
+    border-radius:15px;
+    cursor:pointer;
+    transition:.3s;
+    background:white;
+}
+
+.servicio-extra label:hover{
+    border-color:#d4af37;
+}
+
+.servicio-extra input:checked + label{
+    border-color:#d4af37;
+    background:#fff8e6;
+    box-shadow:0 0 15px rgba(212,175,55,.25);
+}
+
+.icono{
+    font-size:35px;
+}
+
+.servicio-extra h4{
+    margin:0;
+    color:#222;
+}
+
+.servicio-extra p{
+    margin-top:5px;
+    color:#666;
+    font-size:14px;
+}
+
+.servicio-extra small{
+    display:block;
+    margin-top:8px;
+    color:#d4af37;
+    font-weight:bold;
+}
+/* ADMIN */
+
+.admin{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.admin-box{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.admin-card{
+    background:white;
+    padding:40px;
+    width:250px;
+
+    border-radius:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.admin-card h3{
+    margin-bottom:20px;
+}
+
+.admin-card p{
+    font-size:35px;
+    color:#d4af37;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+}
+
+.card-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:20px;
+}
+
+.precio{
+    color:#d4af37;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.card-footer button{
+    background:#111;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.card-footer button:hover{
+    background:#d4af37;
+    color:#fff;
+}
+/* TABLA RESERVAS*/
+
+/* =========================
+   TABLA DE RESERVAS
+========================= */
+
+.tabla-reservas{
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.15);
+}
+
+.tabla-reservas h3{
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #111;
+    text-align: center;
+}
+
+.tabla-reservas table{
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.tabla-reservas thead{
+    background: #d4af37;
+    color: white;
+}
+
+.tabla-reservas th{
+    padding: 18px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.tabla-reservas td{
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tabla-reservas tbody tr{
+    transition: .3s;
+}
+
+.tabla-reservas tbody tr:hover{
+    background: #f8f8f8;
+}
+
+.tabla-reservas tbody tr:nth-child(even){
+    background: #fafafa;
+}
+
+.tabla-reservas tbody tr:nth-child(even):hover{
+    background: #f0f0f0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .tabla-reservas{
+        overflow-x: auto;
+        padding: 20px;
+    }
+
+    .tabla-reservas table{
+        min-width: 700px;
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav ul{
+        flex-direction:column;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+}
